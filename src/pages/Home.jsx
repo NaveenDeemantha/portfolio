@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { StarBackground } from "../components/StarBackground";
 import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
+import { AboutSection } from "../components/AboutSection";
 
 
 export const Home = () => {
@@ -22,6 +23,7 @@ export const Home = () => {
       <main>
         {/* hero */}
         <HeroSection />
+        <AboutSection />>
         
       </main>
 
