@@ -12,6 +12,7 @@ const projects = [
         tags: ['React', 'Node.js', 'MongoDB', 'Express'],
         link: 'https://github.com/NaveenDeemantha/mern-thinkboard',
         github: 'https://github.com/NaveenDeemantha/mern-thinkboard',
+        featured: true,
     },
     {
         title: 'E-Commerce Laravel Vue',
@@ -19,6 +20,31 @@ const projects = [
         tags: ['Vue.js', 'Laravel', 'PHP'],
         link: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
         github: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
+        featured: true,
+    },
+    {
+        title: 'CRM System',
+        description: 'This CRM system is a full-featured business dashboard built with Laravel 10. It supports user authentication (via Laravel Breeze), customer management, proposal & invoice generation, transaction tracking, email notifications (using Mailtrap) and payment processing through Stripe.',
+        tags: ['Laravel', 'PHP', 'Blade'],
+        link: 'https://github.com/NaveenDeemantha/crm_system',
+        github: 'https://github.com/NaveenDeemantha/crm_system',
+        featured: true,
+    },
+    {
+        title: 'Inventory System',
+        description: 'A comprehensive inventory management system built with Vue.js, featuring product tracking, stock management, and user-friendly interface for efficient inventory control.',
+        tags: ['Vue.js', 'JavaScript'],
+        link: 'https://github.com/NaveenDeemantha/Inventory-System',
+        github: 'https://github.com/NaveenDeemantha/Inventory-System',
+        featured: false,
+    },
+    {
+        title: 'Personal Note Writer',
+        description: 'A personal note-taking application built with Laravel, allowing users to create, edit, and organize their notes with a clean and intuitive interface.',
+        tags: ['Laravel', 'PHP', 'Blade'],
+        link: 'https://github.com/NaveenDeemantha/personal-note-writer',
+        github: 'https://github.com/NaveenDeemantha/personal-note-writer',
+        featured: false,
     },
     {
         title: 'Banana Game',
@@ -26,6 +52,7 @@ const projects = [
         tags: ['Vue.js', 'PHP'],
         link: 'https://github.com/NaveenDeemantha/banana_game',
         github: 'https://github.com/NaveenDeemantha/banana_game',
+        featured: false,
     },
 ];
 
@@ -61,11 +88,11 @@ export const ProjectsSection = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {projects.sort((a, b) => b.featured - a.featured).map((project, index) => (
                         <div
                             key={index}
                             ref={(el) => (cardsRef.current[index] = el)}
-                            className="bento-card p-6 group"
+                            className="bento-card p-6 group relative"
                         >
                             <div className="flex justify-between items-start mb-4">
                                 <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
@@ -97,6 +124,18 @@ export const ProjectsSection = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+
+                <div className="text-center mt-12">
+                    <a
+                        href="https://github.com/NaveenDeemantha?tab=repositories"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-opacity"
+                    >
+                        See More Projects
+                        <ExternalLink className="w-4 h-4" />
+                    </a>
                 </div>
             </div>
         </section>

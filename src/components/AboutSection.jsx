@@ -13,18 +13,18 @@ export const AboutSection = () => {
 
         gsap.fromTo(
             contentRef.current.children,
-            { y: 50, opacity: 0 },
+            { y: 30, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
-                duration: 1,
-                stagger: 0.2,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 80%',
-                    end: 'bottom 20%',
-                    toggleActions: 'play none none reverse',
-                    invalidateOnRefresh: true,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                    invalidateOnRefresh: false,
                 },
             }
         );

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github, Linkedin, Mail, ShoppingBag, CheckSquare } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
 import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 
@@ -68,54 +68,30 @@ export const HeroSection = () => {
                 <p className="text-sm text-muted-foreground font-medium">Follow my journey</p>
             </div>
 
-            {/* 4. Experience / Tech Stack (Wide) */}
+            {/* 4. Education (Wide) */}
             <div className="bento-item md:col-span-2 md:row-span-1 bento-card p-6 flex flex-col justify-center overflow-hidden group">
-                <h3 className="bento-title">Tech Stack</h3>
-                <div className="flex flex-wrap gap-2 mt-2">
-                    {['React', 'Vue.js', 'Laravel', 'Node.js', 'MongoDB', 'Tailwind', 'GSAP'].map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-secondary rounded-md text-sm font-medium group-hover:bg-primary group-hover:text-primary-foreground transition-colors cursor-default">
-                            {tech}
-                        </span>
-                    ))}
-                </div>
-            </div>
-
-            {/* 5. Project 1 (Square) */}
-            <div className="bento-item md:col-span-1 md:row-span-2 bento-card p-0 group cursor-pointer flex flex-col">
-                <div className="h-1/2 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 relative overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors" />
-                    <ShoppingBag className="w-12 h-12 text-blue-400 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <div className="p-6 h-1/2 flex flex-col justify-between bg-card/50">
+                <h3 className="bento-title">Education</h3>
+                <div className="mt-2">
+                    <div className="mb-4">
+                        <h4 className="text-lg font-semibold text-foreground">BSc in Software Engineering</h4>
+                        <p className="text-sm text-muted-foreground">University of Bedfordshire</p>
+                        <p className="text-xs text-muted-foreground">Expected Graduation: 2026</p>
+                    </div>
                     <div>
-                        <h3 className="font-bold text-lg mb-1 text-foreground">E-Commerce</h3>
-                        <p className="text-sm text-muted-foreground">Modern shopping experience with Stripe integration.</p>
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-                        <ArrowUpRight className="w-5 h-5" />
-                    </div>
-                </div>
-            </div>
-
-            {/* 6. Project 2 (Square) */}
-            <div className="bento-item md:col-span-1 md:row-span-2 bento-card p-0 group cursor-pointer flex flex-col">
-                <div className="h-1/2 bg-gradient-to-br from-purple-500/20 to-pink-500/20 relative overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors" />
-                    <CheckSquare className="w-12 h-12 text-purple-400 group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <div className="p-6 h-1/2 flex flex-col justify-between bg-card/50">
-                    <div>
-                        <h3 className="font-bold text-lg mb-1 text-foreground">Task Master</h3>
-                        <p className="text-sm text-muted-foreground">Collaborative productivity dashboard.</p>
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
-                        <ArrowUpRight className="w-5 h-5" />
+                        <h4 className="text-lg font-semibold text-foreground">Relevant Coursework</h4>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                            {['Data Structures', 'Algorithms', 'Web Development', 'Database Systems', 'Software Engineering'].map((course) => (
+                                <span key={course} className="px-3 py-1 bg-secondary rounded-md text-sm font-medium group-hover:bg-primary group-hover:text-primary-foreground transition-colors cursor-default">
+                                    {course}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* 7. Contact CTA (Wide) */}
-            <a href="#contact" className="bento-item md:col-span-2 md:row-span-1 bento-card p-8 bg-primary text-primary-foreground flex items-center justify-between group cursor-pointer hover:opacity-95 transition-opacity">
+            {/* 5. Contact CTA (Wide) */}
+            <a href="#contact" className="bento-item md:col-span-4 bento-card p-8 bg-primary text-primary-foreground flex items-center justify-between group cursor-pointer hover:opacity-95 transition-opacity">
                 <div>
                     <h2 className="text-3xl font-bold">Let's work together</h2>
                     <p className="text-primary-foreground/80 mt-1">Have a project in mind?</p>
