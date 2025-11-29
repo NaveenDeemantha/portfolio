@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github } from 'lucide-react';
@@ -7,25 +7,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
     {
-        title: 'E-Commerce Platform',
-        description: 'A full-featured online store with cart, checkout, and admin dashboard.',
-        tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        link: '#',
-        github: '#',
+        title: 'MERN ThinkBoard',
+        description: 'A full-stack notes application built with the MERN stack (MongoDB, Express, React, Node.js), MERN ThinkBoard delivers secure user authentication with JWT/bcrypt, a clean RESTful API, responsive React UI and built-in rate limiting and middleware protections.',
+        tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+        link: 'https://github.com/NaveenDeemantha/mern-thinkboard',
+        github: 'https://github.com/NaveenDeemantha/mern-thinkboard',
     },
     {
-        title: 'Task Management App',
-        description: 'Collaborative task manager with real-time updates and team features.',
-        tags: ['Vue.js', 'Firebase', 'Tailwind'],
-        link: '#',
-        github: '#',
+        title: 'E-Commerce Laravel Vue',
+        description: 'A full-stack e-commerce app built with Laravel and Vue.js, this project features user authentication, product listings, cart & order management, and a modern responsive UI.',
+        tags: ['Vue.js', 'Laravel', 'PHP'],
+        link: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
+        github: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
     },
     {
-        title: 'Portfolio v1',
-        description: 'My previous portfolio site showcasing my early work and growth.',
-        tags: ['HTML', 'SCSS', 'JavaScript'],
-        link: '#',
-        github: '#',
+        title: 'Banana Game',
+        description: 'Banana Game is a fun Vue.js and PHP web game using the Banana API to generate math challenges. Players solve problems quickly to collect bananas across three difficulty levels.',
+        tags: ['Vue.js', 'PHP'],
+        link: 'https://github.com/NaveenDeemantha/banana_game',
+        github: 'https://github.com/NaveenDeemantha/banana_game',
     },
 ];
 
@@ -33,7 +33,7 @@ export const ProjectsSection = () => {
     const sectionRef = useRef(null);
     const cardsRef = useRef([]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const el = sectionRef.current;
 
         gsap.fromTo(
@@ -47,6 +47,7 @@ export const ProjectsSection = () => {
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 70%',
+                    invalidateOnRefresh: true,
                 },
             }
         );

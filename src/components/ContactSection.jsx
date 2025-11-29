@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Send } from 'lucide-react';
@@ -9,7 +9,7 @@ export const ContactSection = () => {
     const sectionRef = useRef(null);
     const formRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const el = sectionRef.current;
 
         gsap.fromTo(
@@ -23,6 +23,7 @@ export const ContactSection = () => {
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 70%',
+                    invalidateOnRefresh: true,
                 },
             }
         );

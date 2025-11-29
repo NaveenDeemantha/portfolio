@@ -22,7 +22,7 @@ export const StarBackground = () => {
 
     const generateStars = () => {
         const numberOfStars = Math.floor(
-            (window.innerWidth * window.innerHeight) / 7500
+            (window.innerWidth * window.innerHeight) / 15000 // Increased divisor for fewer stars
         );
 
         const newStars = [];
@@ -40,7 +40,7 @@ export const StarBackground = () => {
         setStars(newStars);
     };
     const generateMeteors = () => {
-        const numberOfMeteors =  6;
+        const numberOfMeteors =  3; // Reduced meteors
 
         const newMeteors = [];
 
@@ -62,7 +62,7 @@ export const StarBackground = () => {
             {stars.map((star) => (
                 <div 
                 key={star.id} 
-                className="star animate-pulse-subtle" 
+                className="star animate-pulse-subtle absolute bg-white rounded-full" 
                 style={{
                     width: star.size + "px",
                     height: star.size + "px",
@@ -70,20 +70,22 @@ export const StarBackground = () => {
                     top: star.y + "%",
                     opacity: star.opacity,
                     animationDuration: star.animationDuration + "s",
+                    willChange: 'opacity',
                 }} 
                 />
             ))}
             {meteors.map((meteor) => (
                 <div 
                 key={meteor.id} 
-                className="meteor animate-meteor" 
+                className="meteor animate-meteor absolute bg-gradient-to-r from-white to-transparent rounded-full" 
                 style={{
                     width: meteor.size * 8 + "px",
                     height: meteor.size * 2 + "px",
                     left: meteor.x + "%",
                     top: meteor.y + "%",
-                    animationDelay: meteor.delay,
+                    animationDelay: meteor.delay + "s",
                     animationDuration: meteor.animationDuration + "s",
+                    willChange: 'transform, opacity',
                 }} 
                 />
             ))}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -8,7 +8,7 @@ export const AboutSection = () => {
     const sectionRef = useRef(null);
     const contentRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const el = sectionRef.current;
 
         gsap.fromTo(
@@ -24,6 +24,7 @@ export const AboutSection = () => {
                     start: 'top 80%',
                     end: 'bottom 20%',
                     toggleActions: 'play none none reverse',
+                    invalidateOnRefresh: true,
                 },
             }
         );
@@ -43,6 +44,9 @@ export const AboutSection = () => {
                         </p>
                         <p>
                             With a background in both engineering and design, I bridge the gap between technical complexity and visual elegance. I'm constantly exploring new technologies and pushing the boundaries of what's possible on the web.
+                        </p>
+                        <p className="mt-6">
+                            Currently working as a Full-Stack Developer Intern at Weblook International, and pursuing my Software Engineering degree.
                         </p>
                     </div>
                 </div>

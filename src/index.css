@@ -27,6 +27,8 @@
 
   --animate-fade-in: fade-in 0.5s ease-out forwards;
   --animate-slide-up: slide-up 0.5s ease-out forwards;
+  --animate-pulse-subtle: pulse-subtle 3s ease-in-out infinite;
+  --animate-meteor: meteor 5s linear infinite;
 
   @keyframes fade-in {
     from {
@@ -47,6 +49,26 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes meteor {
+    0% {
+      transform: translateX(-100px) translateY(-100px) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg);
+      opacity: 0;
     }
   }
 }

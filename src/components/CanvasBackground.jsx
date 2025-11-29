@@ -17,15 +17,15 @@ export const CanvasBackground = () => {
         resizeCanvas();
 
         const stars = [];
-        const numStars = 200; // Optimized count
+        const numStars = 100; // Reduced for better performance
 
         for (let i = 0; i < numStars; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 radius: Math.random() * 1.5,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
+                vx: (Math.random() - 0.5) * 0.2, // Slower movement
+                vy: (Math.random() - 0.5) * 0.2,
                 alpha: Math.random(),
             });
         }
@@ -54,10 +54,12 @@ export const CanvasBackground = () => {
                 if (star.y < 0) star.y = canvas.height;
                 if (star.y > canvas.height) star.y = 0;
 
-                // Twinkle
-                star.alpha += (Math.random() - 0.5) * 0.05;
-                if (star.alpha < 0.1) star.alpha = 0.1;
-                if (star.alpha > 1) star.alpha = 1;
+                // Twinkle less frequently
+                if (Math.random() < 0.01) { // Only 1% chance per frame
+                    star.alpha += (Math.random() - 0.5) * 0.1;
+                    if (star.alpha < 0.1) star.alpha = 0.1;
+                    if (star.alpha > 1) star.alpha = 1;
+                }
             });
 
             // Draw subtle grid lines for "futuristic" feel
@@ -94,6 +96,7 @@ export const CanvasBackground = () => {
         <canvas
             ref={canvasRef}
             className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+            style={{ willChange: 'transform' }}
         />
     );
 };

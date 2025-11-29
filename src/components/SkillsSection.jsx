@@ -1,20 +1,20 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
-    { category: 'Frontend', items: ['React', 'Vue', 'Next.js', 'Tailwind CSS', 'GSAP', 'Three.js'] },
-    { category: 'Backend', items: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB'] },
-    { category: 'Tools', items: ['Git', 'Docker', 'Figma', 'AWS', 'Vercel'] },
+    { category: 'Frontend', items: ['React', 'Vue.js', 'Next.js', 'Tailwind CSS', 'GSAP', 'Three.js'] },
+    { category: 'Backend', items: ['Node.js', 'Express', 'Laravel', 'PHP', 'MongoDB', 'MySQL'] },
+    { category: 'Tools', items: ['Git', 'Docker', 'Figma', 'AWS', 'Vercel', 'Postman'] },
 ];
 
 export const SkillsSection = () => {
     const sectionRef = useRef(null);
     const categoriesRef = useRef([]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const el = sectionRef.current;
 
         categoriesRef.current.forEach((cat, index) => {
@@ -29,6 +29,7 @@ export const SkillsSection = () => {
                     scrollTrigger: {
                         trigger: el,
                         start: 'top 75%',
+                        invalidateOnRefresh: true,
                     },
                 }
             );

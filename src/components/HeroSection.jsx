@@ -1,11 +1,11 @@
 import { ArrowUpRight, Github, Linkedin, Mail, ShoppingBag, CheckSquare } from 'lucide-react';
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 
 export const HeroSection = () => {
     const containerRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from('.bento-item', {
                 y: 50,
@@ -13,6 +13,7 @@ export const HeroSection = () => {
                 duration: 0.8,
                 stagger: 0.1,
                 ease: 'power3.out',
+                invalidateOnRefresh: true,
             });
         }, containerRef);
 
@@ -27,14 +28,13 @@ export const HeroSection = () => {
                 <div>
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 mb-6 overflow-hidden">
                         {/* Placeholder for avatar */}
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Naveen" alt="Avatar" className="w-full h-full object-cover" />
+                        <img src="https://avatars.githubusercontent.com/u/117744019?v=4" alt="Avatar" className="w-full h-full object-cover" />
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
                         Naveen Deemantha
                     </h1>
                     <p className="text-xl text-muted-foreground">
-                        Full Stack Developer & UI/UX Enthusiast.
-                        Building digital products with focus on experience.
+                        Full-Stack Developer Intern and Software Engineering undergraduate, passionate about building user-focused web and mobile applications.
                     </p>
                 </div>
                 <div className="mt-8 flex gap-4">
@@ -54,7 +54,7 @@ export const HeroSection = () => {
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 </div>
                 <div>
-                    <h3 className="text-2xl font-bold">Colombo, LK</h3>
+                    <h3 className="text-2xl font-bold">Colombo, Sri Lanka</h3>
                     <p className="text-zinc-400 text-sm">Remote available</p>
                 </div>
             </div>
@@ -72,7 +72,7 @@ export const HeroSection = () => {
             <div className="bento-item md:col-span-2 md:row-span-1 bento-card p-6 flex flex-col justify-center overflow-hidden group">
                 <h3 className="bento-title">Tech Stack</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
-                    {['React', 'Next.js', 'TypeScript', 'Tailwind', 'Node.js', 'PostgreSQL', 'Figma'].map((tech) => (
+                    {['React', 'Vue.js', 'Laravel', 'Node.js', 'MongoDB', 'Tailwind', 'GSAP'].map((tech) => (
                         <span key={tech} className="px-3 py-1 bg-secondary rounded-md text-sm font-medium group-hover:bg-primary group-hover:text-primary-foreground transition-colors cursor-default">
                             {tech}
                         </span>
