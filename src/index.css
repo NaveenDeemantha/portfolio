@@ -193,3 +193,19 @@ body { background: transparent !important; }
 
 /* Add dark gradient background to html */
 html { background: linear-gradient(to bottom, #0a0a0a, #1a1a2e) !important; min-height: 100vh; }
+/* Force dark mode */
+:root {
+  --background: 240 10% 3.9% !important;
+  --foreground: 0 0% 98% !important;
+  --card: 240 10% 3.9% !important;
+  --border: 240 3.7% 25% !important;
+}
+
+/* Make body transparent */
+body { background: transparent !important; }
+
+/* Glassmorphism cards */
+.bento-card { background: rgba(10, 10, 10, 0.7) !important; backdrop-filter: blur(10px); }
+
+/* Dark gradient background */
+html { background: linear-gradient(to bottom, #0a0a0a, #1a1a2e) !important; min-height: 100vh; }
