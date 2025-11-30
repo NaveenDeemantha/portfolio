@@ -210,7 +210,7 @@ export const ContactSection = () => {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed" style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
                         >
                             {isSubmitting ? (
                                 <>

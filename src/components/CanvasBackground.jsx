@@ -33,9 +33,7 @@ export const CanvasBackground = () => {
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw background
-            ctx.fillStyle = '#050505'; // Deep dark background
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Don't draw solid background - keep it transparent!
 
             // Draw stars
             stars.forEach((star) => {

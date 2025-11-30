@@ -184,3 +184,12 @@
 @utility icon-box {
   @apply w-10 h-10 rounded-full bg-secondary flex items-center justify-center mb-4;
 }
+
+/* Make body transparent to show canvas background */
+body { background: transparent !important; }
+
+/* Make bento cards semi-transparent with glassmorphism */
+.bento-card { background: rgba(10, 10, 10, 0.7) !important; backdrop-filter: blur(10px); }
+
+/* Add dark gradient background to html */
+html { background: linear-gradient(to bottom, #0a0a0a, #1a1a2e) !important; min-height: 100vh; }

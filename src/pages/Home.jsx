@@ -7,10 +7,10 @@ import { ContactSection } from "../components/ContactSection";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground pb-20">
+    <div className="min-h-screen text-foreground selection:bg-primary selection:text-primary-foreground pb-20 relative">
       <Navbar />
 
-      <main className="pt-20">
+      <main className="pt-20 relative z-10">
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
