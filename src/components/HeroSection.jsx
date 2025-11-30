@@ -7,13 +7,21 @@ export const HeroSection = () => {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from('.bento-item', {
-                y: 50,
+            // Set initial state explicitly
+            gsap.set('.bento-item', {
                 opacity: 0,
+                y: 50
+            });
+
+            // Animate in with a slight delay to ensure DOM is ready
+            gsap.to('.bento-item', {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: 'power3.out',
-                invalidateOnRefresh: true,
+                delay: 0.1,
+                clearProps: 'all', // Clear inline styles after animation
             });
         }, containerRef);
 
