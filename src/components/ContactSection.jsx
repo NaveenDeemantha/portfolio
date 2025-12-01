@@ -3,10 +3,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
+import { supabase } from '../lib/supabaseClient';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 export const ContactSection = () => {
     const sectionRef = useRef(null);
@@ -95,36 +94,34 @@ export const ContactSection = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch(`${API_URL}/api/contact`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+            const { error } = await supabase
+                .from('messages')
+                .insert([
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        message: formData.message
+                    }
+                ]);
+
+            if (error) throw error;
+
+            toast({
+                title: (
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span>Message Sent!</span>
+                    </div>
+                ),
+                description: 'Thank you for reaching out. I\'ll get back to you soon!',
             });
 
-            const data = await response.json();
-
-            if (response.ok && data.success) {
-                toast({
-                    title: (
-                        <div className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-green-500" />
-                            <span>Message Sent!</span>
-                        </div>
-                    ),
-                    description: 'Thank you for reaching out. I\'ll get back to you soon!',
-                });
-
-                // Reset form
-                setFormData({
-                    name: '',
-                    email: '',
-                    message: '',
-                });
-            } else {
-                throw new Error(data.message || 'Failed to send message');
-            }
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                message: '',
+            });
         } catch (error) {
             console.error('Error sending message:', error);
             toast({
@@ -134,7 +131,7 @@ export const ContactSection = () => {
                         <span>Error</span>
                     </div>
                 ),
-                description: error.message || 'Failed to send message. Please try again later.',
+                description: 'Failed to send message. Please try again later.',
                 variant: 'destructive',
             });
         } finally {
