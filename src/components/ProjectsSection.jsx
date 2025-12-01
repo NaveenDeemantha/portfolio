@@ -1,117 +1,143 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ExternalLink, Github } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
     {
-        id: 1,
-        title: "Project one",
-        description: "This is a description for project one.",
-        image: "/projects/project1.png",
-        tags: ["React", "Node.js"],
-        demoUrl: "#",
-        githubUrl: "#",
+        title: 'MERN ThinkBoard',
+        description: 'A full-stack notes application built with the MERN stack (MongoDB, Express, React, Node.js), MERN ThinkBoard delivers secure user authentication with JWT/bcrypt, a clean RESTful API, responsive React UI and built-in rate limiting and middleware protections.',
+        tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+        link: 'https://github.com/NaveenDeemantha/mern-thinkboard',
+        github: 'https://github.com/NaveenDeemantha/mern-thinkboard',
+        featured: true,
     },
-     {
-        id: 2,
-        title: "Project two",
-        description: "This is a description for project two.",
-        image: "/projects/project2.png",
-        tags: ["React", "Node.js"],
-        demoUrl: "#",
-        githubUrl: "#",
+    {
+        title: 'E-Commerce Laravel Vue',
+        description: 'A full-stack e-commerce app built with Laravel and Vue.js, this project features user authentication, product listings, cart & order management, and a modern responsive UI.',
+        tags: ['Vue.js', 'Laravel', 'PHP'],
+        link: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
+        github: 'https://github.com/NaveenDeemantha/eCom-Laravel-vue',
+        featured: true,
     },
-     {
-        id: 3,
-        title: "Project three",
-        description: "This is a description for project three.",
-        image: "/projects/project3.png",
-        tags: ["React", "Node.js"],
-        demoUrl: "#",
-        githubUrl: "#",
+    {
+        title: 'CRM System',
+        description: 'This CRM system is a full-featured business dashboard built with Laravel 10. It supports user authentication (via Laravel Breeze), customer management, proposal & invoice generation, transaction tracking, email notifications (using Mailtrap) and payment processing through Stripe.',
+        tags: ['Laravel', 'PHP', 'Blade'],
+        link: 'https://github.com/NaveenDeemantha/crm_system',
+        github: 'https://github.com/NaveenDeemantha/crm_system',
+        featured: true,
     },
-     {
-        id: 4,
-        title: "Project four",
-        description: "This is a description for project four.",
-        image: "/projects/project4.png",
-        tags: ["React", "Node.js"],
-        demoUrl: "#",
-        githubUrl: "#",
+    {
+        title: 'Inventory System',
+        description: 'A comprehensive inventory management system built with Vue.js, featuring product tracking, stock management, and user-friendly interface for efficient inventory control.',
+        tags: ['Vue.js', 'JavaScript'],
+        link: 'https://github.com/NaveenDeemantha/Inventory-System',
+        github: 'https://github.com/NaveenDeemantha/Inventory-System',
+        featured: false,
     },
-    
-]
+    {
+        title: 'Personal Note Writer',
+        description: 'A personal note-taking application built with Laravel, allowing users to create, edit, and organize their notes with a clean and intuitive interface.',
+        tags: ['Laravel', 'PHP', 'Blade'],
+        link: 'https://github.com/NaveenDeemantha/personal-note-writer',
+        github: 'https://github.com/NaveenDeemantha/personal-note-writer',
+        featured: false,
+    },
+    {
+        title: 'Banana Game',
+        description: 'Banana Game is a fun Vue.js and PHP web game using the Banana API to generate math challenges. Players solve problems quickly to collect bananas across three difficulty levels.',
+        tags: ['Vue.js', 'PHP'],
+        link: 'https://github.com/NaveenDeemantha/banana_game',
+        github: 'https://github.com/NaveenDeemantha/banana_game',
+        featured: false,
+    },
+];
 
 export const ProjectsSection = () => {
-    return (
-        <section id="projects" className="py-24 px-4 relative">
-            <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-                    {" "}
-                    Featured <span className="text-primary">Projects</span>
-                </h2>
-                <p className="text-center text-foreground/70 mb-12 max-w-2xl mx-auto ">
-                    Here are some of the projects I've worked on recently. 
-                    Click on any project to learn more about it.
-                </p>
+    const sectionRef = useRef(null);
+    const cardsRef = useRef([]);
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    {projects.map((project, key) => (
-                        <div key={key} className="group bg-card rounded-lg overflow-hidden shadow-sm card-hover">
-                            <div className="aspect-video bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-                                <img 
-                                    src={project.image} 
-                                    alt={project.title}  
-                                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                                    onError={(e) => {
-                                        e.target.src = "https://via.placeholder.com/400x300/6366f1/ffffff?text=Project+Image";
-                                    }}
-                                />
+    useLayoutEffect(() => {
+        const el = sectionRef.current;
+
+        gsap.fromTo(
+            cardsRef.current,
+            { y: 100, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 70%',
+                    invalidateOnRefresh: true,
+                },
+            }
+        );
+    }, []);
+
+    return (
+        <section id="projects" ref={sectionRef} className="py-20 md:py-32 bg-secondary/30">
+            <div className="container px-4">
+                <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center text-foreground">
+                    Featured Projects
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.sort((a, b) => b.featured - a.featured).map((project, index) => (
+                        <div
+                            key={index}
+                            ref={(el) => (cardsRef.current[index] = el)}
+                            className="bento-card p-6 group relative"
+                        >
+                            <div className="flex justify-between items-start mb-4">
+                                <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                                    {project.title}
+                                </h3>
+                                <div className="flex gap-3">
+                                    <a href={project.github} className="hover:text-primary transition-colors">
+                                        <Github className="w-5 h-5" />
+                                    </a>
+                                    <a href={project.link} className="hover:text-primary transition-colors">
+                                        <ExternalLink className="w-5 h-5" />
+                                    </a>
+                                </div>
                             </div>
-                            <div className="p-6">
-                                <div className="flex flex-wrap gap-2 mb-4 ">
-                                    {project.tags.map((tag) => (
-                                        <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
-                                             {tag} 
-                                        </span>
-                                    ))}
-                                </div>
-                                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                                <p className="text-foreground/70 text-sm mb-4">
-                                    {project.description}
-                                </p>
-                                <div className="flex justify-between items-center">
-                                    <div className="flex space-x-3">
-                                        <a 
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <ExternalLink size={20}/>
-                                        </a>
-                                        <a 
-                                            href={project.githubUrl} 
-                                            target="_blank"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <Github size={20}/>
-                                        </a>
-                                    </div>
-                                </div>
+
+                            <p className="text-muted-foreground mb-6">
+                                {project.description}
+                            </p>
+
+                            <div className="flex flex-wrap gap-2">
+                                {project.tags.map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     ))}
                 </div>
 
                 <div className="text-center mt-12">
-                    <a 
-                        href="https://github.com/NaveenDeemantha" 
-                        className="cosmic-button w-fit flex items-center mx-auto gap-2"
+                    <a
+                        href="https://github.com/NaveenDeemantha?tab=repositories"
                         target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-opacity"
                     >
-                        Checkout My Github <ArrowRight size={16} />
+                        See More Projects
+                        <ExternalLink className="w-4 h-4" />
                     </a>
                 </div>
             </div>
         </section>
-    )
-
-}
+    );
+};
